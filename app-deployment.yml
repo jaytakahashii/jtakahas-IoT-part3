@@ -31,3 +31,22 @@ spec:
       targetPort: 8888
   selector:
     app: jtakahas
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: playground-ingress
+  namespace: dev
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false" # HTTPでアクセスする場合に必要
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jtakahas-service
+                port:
+                  number: 80
