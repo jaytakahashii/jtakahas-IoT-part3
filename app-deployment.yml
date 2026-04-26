@@ -25,7 +25,7 @@ metadata:
   name: jtakahas-service
   namespace: dev
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 8888
